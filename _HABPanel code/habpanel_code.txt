@@ -1,0 +1,165 @@
+<div class="section">
+	<div class="sectionIconContainer"><div class="sectionIcon"><svg viewBox="0 0 48 48"><use xlink:href="/static/matrix-theme/smarthome.svg#dark-cat"></use></svg></div></div>
+	<div class="bigDash">
+		<div class="description">Katze - {{itemValue('SurePet_Name_1')}}</div>    
+		<div class="top">
+			<div class="icon" ng-class="{true: 'off', false: 'on'}[itemValue('SurePet_Where_1')!='1']"><svg viewBox="0 0 48 48"><use xlink:href="/static/matrix-theme/smarthome.svg#home"></use></svg></div>
+	  <div class="value"><div class="main"><img src="{{itemValue('SurePet_Photo_1')}}"/></div></div>
+	  <div class="icon" ng-class="{true: 'off', false: 'on'}[itemValue('SurePet_Where_1')!='2']"><svg viewBox="0 0 48 48"><use xlink:href="/static/matrix-theme/smarthome.svg#garden-wall"></use></svg></div>
+		</div>
+	<div class="bottom">
+	  <div class="sceneGroup">
+		<div class="scene on2" ng-class="{true: 'disabled'}[itemValue('SurePet_Where_1')=='2']" ng-click="sendCmd('SurePet_WhereCommand_1', 'OUTSIDE')">SET OUTSIDE</div>
+		<div class="scene on2" ng-class="{true: 'disabled'}[itemValue('SurePet_Where_1')=='1']" ng-click="sendCmd('SurePet_WhereCommand_1', 'INSIDE')">SET INSIDE</div>
+	  </div>
+	</div>
+	<div class="bottom">
+			<div class="icon off"><svg viewBox="0 0 48 48"><use xlink:href="/static/matrix-theme/smarthome.svg#dark-cat"></use></svg></div>
+	  <div class="value">Wo?</div>
+	  <div class="valueGroup"><div class="value">{{itemValue('SurePet_WhereMap_1')}}</div></div>
+			<div class="icon off"><svg viewBox="0 0 48 48"><use xlink:href="/static/matrix-theme/smarthome.svg#dark-cat"></use></svg></div>
+	  <div class="value">Seit</div>
+	  <div class="valueGroup"><div class="value">{{itemValue('SurePet_Since_1') | date:"EEE HH:mm"}}</div></div>
+	</div>
+		<div class="bottom">
+			<div class="icon off"><svg viewBox="0 0 48 48"><use xlink:href="/static/matrix-theme/smarthome.svg#dark-cat"></use></svg></div>
+	  <div class="value">Betreten / Verlassen durch</div>
+	  <div class="valueGroup"><div class="value">{{itemValue('SurePet_EnteredThrough_1')}}</div></div>
+	</div>
+	<div class="bottom">
+			<div class="icon off"><svg viewBox="0 0 48 48"><use xlink:href="/static/matrix-theme/smarthome.svg#dark-cat"></use></svg></div>
+	  <div class="value">Geschlecht</div>
+	  <div class="valueGroup"><div class="value">{{itemValue('SurePet_GenderMap_1')}}</div></div>
+			<div class="icon off"><svg viewBox="0 0 48 48"><use xlink:href="/static/matrix-theme/smarthome.svg#dark-cat"></use></svg></div>
+	  <div class="value">Gewicht</div>
+	  <div class="valueGroup"><div class="value">{{itemValue('SurePet_Weight_1')}} kg</div></div>
+	</div>
+		<div class="bottom">
+			<div class="icon off"><svg viewBox="0 0 48 48"><use xlink:href="/static/matrix-theme/smarthome.svg#dark-cat"></use></svg></div>
+	  <div class="value">Geburtstag</div>
+	  <div class="valueGroup"><div class="value">{{itemValue('SurePet_Birthday_1') | date:"EEEE', 'dd. MMMM yyyy hh:mm"}}</div></div>
+	</div>
+	<div class="bottom">
+			<div class="icon off"><svg viewBox="0 0 48 48"><use xlink:href="/static/matrix-theme/smarthome.svg#dark-cat"></use></svg></div>
+	  <div class="value">Rasse</div>
+	  <div class="valueGroup"><div class="value">{{itemValue('SurePet_BreedIdMap_1')}}</div></div>
+	</div>
+		<div class="bottom">
+	  <div class="icon off"><svg viewBox="0 0 48 48"><use xlink:href="/static/matrix-theme/smarthome.svg#dark-cat"></use></svg></div>
+	  <div class="value">Futter</div>
+	  <div class="valueGroup"><div class="value">{{itemValue('SurePet_FoodTypeMap_1')}}</div></div>
+	</div>
+  </div>
+  <div class="bigDash">
+		<div class="description">Katze - {{itemValue('SurePet_Name_2')}}</div>    
+		<div class="top">
+			<div class="icon" ng-class="{true: 'off', false: 'on'}[itemValue('SurePet_Where_2')!='1']"><svg viewBox="0 0 48 48"><use xlink:href="/static/matrix-theme/smarthome.svg#home"></use></svg></div>
+	  <div class="value"><div class="main"><img src="{{itemValue('SurePet_Photo_2')}}"/></div></div>
+	  <div class="icon" ng-class="{true: 'off', false: 'on'}[itemValue('SurePet_Where_2')!='2']"><svg viewBox="0 0 48 48"><use xlink:href="/static/matrix-theme/smarthome.svg#garden-wall"></use></svg></div>
+		</div>
+	<div class="bottom">
+	  <div class="sceneGroup">
+		<div class="scene on2" ng-class="{true: 'disabled'}[itemValue('SurePet_Where_2')=='2']" ng-click="sendCmd('SurePet_WhereCommand_2', 'OUTSIDE')">SET OUTSIDE</div>
+		<div class="scene on2" ng-class="{true: 'disabled'}[itemValue('SurePet_Where_2')=='1']" ng-click="sendCmd('SurePet_WhereCommand_2', 'INSIDE')">SET INSIDE</div>
+	  </div>
+	</div>
+	<div class="bottom">
+			<div class="icon off"><svg viewBox="0 0 48 48"><use xlink:href="/static/matrix-theme/smarthome.svg#dark-cat"></use></svg></div>
+	  <div class="value">Wo?</div>
+	  <div class="valueGroup"><div class="value">{{itemValue('SurePet_WhereMap_2')}}</div></div>
+			<div class="icon off"><svg viewBox="0 0 48 48"><use xlink:href="/static/matrix-theme/smarthome.svg#dark-cat"></use></svg></div>
+	  <div class="value">Seit</div>
+	  <div class="valueGroup"><div class="value">{{itemValue('SurePet_Since_2') | date:"EEE HH:mm"}}</div></div>
+	</div>
+		<div class="bottom">
+			<div class="icon off"><svg viewBox="0 0 48 48"><use xlink:href="/static/matrix-theme/smarthome.svg#dark-cat"></use></svg></div>
+	  <div class="value">Betreten / Verlassen durch</div>
+	  <div class="valueGroup"><div class="value">{{itemValue('SurePet_EnteredThrough_2')}}</div></div>
+	</div>
+	<div class="bottom">
+			<div class="icon off"><svg viewBox="0 0 48 48"><use xlink:href="/static/matrix-theme/smarthome.svg#dark-cat"></use></svg></div>
+	  <div class="value">Geschlecht</div>
+	  <div class="valueGroup"><div class="value">{{itemValue('SurePet_GenderMap_2')}}</div></div>
+			<div class="icon off"><svg viewBox="0 0 48 48"><use xlink:href="/static/matrix-theme/smarthome.svg#dark-cat"></use></svg></div>
+	  <div class="value">Gewicht</div>
+	  <div class="valueGroup"><div class="value">{{itemValue('SurePet_Weight_2')}} kg</div></div>
+	</div>
+		<div class="bottom">
+			<div class="icon off"><svg viewBox="0 0 48 48"><use xlink:href="/static/matrix-theme/smarthome.svg#dark-cat"></use></svg></div>
+	  <div class="value">Geburtstag</div>
+	  <div class="valueGroup"><div class="value">{{itemValue('SurePet_Birthday_2') | date:"EEEE', 'dd. MMMM yyyy hh:mm"}}</div></div>
+	</div>
+	<div class="bottom">
+			<div class="icon off"><svg viewBox="0 0 48 48"><use xlink:href="/static/matrix-theme/smarthome.svg#dark-cat"></use></svg></div>
+	  <div class="value">Rasse</div>
+	  <div class="valueGroup"><div class="value">{{itemValue('SurePet_BreedIdMap_2')}}</div></div>
+	</div>
+		<div class="bottom">
+	  <div class="icon off"><svg viewBox="0 0 48 48"><use xlink:href="/static/matrix-theme/smarthome.svg#dark-cat"></use></svg></div>
+	  <div class="value">Futter</div>
+	  <div class="valueGroup"><div class="value">{{itemValue('SurePet_FoodTypeMap_2')}}</div></div>
+	</div>
+  </div>
+	<div class="bigDash">
+		<div class="description">Hub / Devices</div>    
+		<div class="bottom">
+			<div class="icon off"><svg viewBox="0 0 48 48"><use xlink:href="/static/matrix-theme/smarthome.svg#drive"></use></svg></div>
+	  <div class="value">Hub "{{itemValue('SurePet_HubName')}}"</div>
+	  <div class="valueGroup"><div class="value">{{itemValue('SurePet_HubOnline') == "true" ? "online" : "offline" }}</div></div>
+			<div class="icon off"><svg viewBox="0 0 48 48"><use xlink:href="/static/matrix-theme/smarthome.svg#drive"></use></svg></div>
+	  <div class="value">Firmware</div>
+	  <div class="valueGroup"><div class="value">{{itemValue('SurePet_HubFirmware')}}</div></div>
+	</div>
+		<div class="bottom">
+			<div class="icon off"><svg viewBox="0 0 48 48"><use xlink:href="/static/matrix-theme/smarthome.svg#drive"></use></svg></div>
+	  <div class="value">Serial</div>
+	  <div class="valueGroup"><div class="value">{{itemValue('SurePet_HubSerial')}}</div></div>
+			<div class="icon off"><svg viewBox="0 0 48 48"><use xlink:href="/static/matrix-theme/smarthome.svg#drive"></use></svg></div>
+	  <div class="value">Led</div>
+	  <div class="valueGroup"><div class="value">{{itemValue('SurePet_HubLedMode')}}</div></div>
+	</div>
+		<div class="bottom">
+			<div class="icon off"><svg viewBox="0 0 48 48"><use xlink:href="/static/matrix-theme/smarthome.svg#drive"></use></svg></div>
+	  <div class="value">Mac</div>
+	  <div class="valueGroup"><div class="value">{{itemValue('SurePet_HubMac')}}</div></div>
+			<div class="icon off"><svg viewBox="0 0 48 48"><use xlink:href="/static/matrix-theme/smarthome.svg#drive"></use></svg></div>
+	  <div class="value">Pairing</div>
+	  <div class="valueGroup"><div class="value">{{itemValue('SurePet_HubPairingMode') == "0" ? "no" : "yes" }}</div></div>
+	</div>
+  </div>
+	<div class="bigDash">
+		<div class="description">Flap / Devices</div>    
+		<div class="bottom">
+			<div class="icon off"><svg viewBox="0 0 48 48"><use xlink:href="/static/matrix-theme/smarthome.svg#drive"></use></svg></div>
+	  <div class="value">"{{itemValue('SurePet_FlapName_1')}}"</div>
+	  <div class="valueGroup"><div class="value">{{itemValue('SurePet_FlapStatusOnline_1') == "true" ? "online" : "offline" }}</div></div>
+			<div class="icon off"><svg viewBox="0 0 48 48"><use xlink:href="/static/matrix-theme/smarthome.svg#drive"></use></svg></div>
+	  <div class="value">Firmware</div>
+	  <div class="valueGroup"><div class="value">{{itemValue('SurePet_FlapStatusFirmware_1')}}</div></div>
+	</div>
+		<div class="bottom">
+			<div class="icon off"><svg viewBox="0 0 48 48"><use xlink:href="/static/matrix-theme/smarthome.svg#drive"></use></svg></div>
+	  <div class="value">Serial</div>
+	  <div class="valueGroup"><div class="value">{{itemValue('SurePet_FlapSerial_1')}}</div></div>
+			<div class="icon off"><svg viewBox="0 0 48 48"><use xlink:href="/static/matrix-theme/smarthome.svg#drive"></use></svg></div>
+	  <div class="value">Battery</div>
+	  <div class="valueGroup"><div class="value">{{itemValue('SurePet_FlapBattery_1')}}</div></div>
+	</div>
+		<div class="bottom">
+			<div class="icon off"><svg viewBox="0 0 48 48"><use xlink:href="/static/matrix-theme/smarthome.svg#drive"></use></svg></div>
+	  <div class="value">Mac</div>
+	  <div class="valueGroup"><div class="value">{{itemValue('SurePet_FlapMac_1')}}</div></div>
+			<div class="icon off"><svg viewBox="0 0 48 48"><use xlink:href="/static/matrix-theme/smarthome.svg#drive"></use></svg></div>
+	  <div class="value">Curfew</div>
+	  <div class="valueGroup"><div class="value">{{itemValue('SurePet_FlapCurfewEnabled_1') == "false" ? "no" : "yes" }}</div></div>
+	</div>
+		<div class="bottom">
+			<div class="icon off"><svg viewBox="0 0 48 48"><use xlink:href="/static/matrix-theme/smarthome.svg#drive"></use></svg></div>
+	  <div class="value">Signal Hub</div>
+	  <div class="valueGroup"><div class="value">{{'%.1f' | sprintf:itemValue('SurePet_FlapStatusSignalHub_1')}}</div></div>
+			<div class="icon off"><svg viewBox="0 0 48 48"><use xlink:href="/static/matrix-theme/smarthome.svg#drive"></use></svg></div>
+	  <div class="value">Signal</div>
+	  <div class="valueGroup"><div class="value">{{'%.1f' | sprintf:itemValue('SurePet_FlapStatusSignal_1')}}</div></div>
+	</div>
+  </div>
+</div>
