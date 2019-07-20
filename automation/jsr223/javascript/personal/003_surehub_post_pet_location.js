@@ -13,7 +13,7 @@ JSRule({
 	],
 	execute: function( module, input){
 		var triggeringItem = input.event.itemName;
-		var itemId = triggeringItem.split("_")[2]
+		var itemId = triggeringItem.split("_")[2];
 		var petId = items["SurePet_Id_" + itemId];
 		var command = input.command;
 
