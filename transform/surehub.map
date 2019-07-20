@@ -1,3 +1,4 @@
+gender_0=undefiniert
 gender_1=Männlich
 gender_2=Weiblich
 
@@ -56,8 +57,11 @@ breed_381=Türkisch Van
 breed_382=Kurzhaarige Hauskatze
 breed_383=Langhaarige Hauskatze
 breed_384=Wildkatze
+breed_NULL=UNDEF
 
 food_1=Nassfutter
 food_2=Trockenfutter
 food_3=Nass- u. Trockenfutter
+food_NULL=UNDEF
+
 NULL=undefiniert

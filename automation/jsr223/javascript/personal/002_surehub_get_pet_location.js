@@ -19,7 +19,7 @@ JSRule({
 		var timeout = 5000;
 		var httpmethod = "GET";
 		// you may adjust this url
-		var url = "https://app.api.surehub.io/api/pet/?pet=" + pet1Str + "&pet=" + pet2Str + "&with%5B%5D=position"
+		var url = "https://app.api.surehub.io/api/pet/?pet=" + pet1Str + "&pet=" + pet2Str + "&with%5B%5D=status"
 
 		var json = executeCommandLineAndWaitResponse("/etc/openhab2/scripts/surehub.sh " + httpmethod + " " + token + " " +url, timeout);
 
@@ -33,32 +33,38 @@ JSRule({
 		{
 			var action = getAction("Transformation").static;
 
-			var SurePet_Id = action.transform("JSONPATH", "$.data["+i+"].id", json);
-			var SurePet_Name = action.transform("JSONPATH", "$.data["+i+"].name", json);
-			var SurePet_Gender = action.transform("JSONPATH", "$.data["+i+"].gender", json);
+			var SurePet_Id = action.transform("JSONPATH", "$.data["+i+"][?(@.id)].id", json);
+			var SurePet_Name = action.transform("JSONPATH", "$.data["+i+"][?(@.name)].name", json);
+			var SurePet_Gender = action.transform("JSONPATH", "$.data["+i+"][?(@.gender)].gender", json);
 			var SurePet_Birthday = action.transform("JSONPATH", "$.data["+i+"][?(@.date_of_birth)].date_of_birth", json);
-			var SurePet_Weight = action.transform("JSONPATH", "$.data["+i+"].weight", json);
-			var SurePet_Comments = action.transform("JSONPATH", "$.data["+i+"].comments", json);
-			var SurePet_HouseholdId = action.transform("JSONPATH", "$.data["+i+"].household_id", json);
-			var SurePet_BreedId = action.transform("JSONPATH", "$.data["+i+"].breed_id", json);
-			var SurePet_FoodTypeId = action.transform("JSONPATH", "$.data["+i+"].food_type_id", json);
-			var SurePet_PhotoId = action.transform("JSONPATH", "$.data["+i+"].photo_id", json);
-			var SurePet_SpeciesId = action.transform("JSONPATH", "$.data["+i+"].species_id", json);
-			var SurePet_TagId = action.transform("JSONPATH", "$.data["+i+"].tag_id", json);
-			var SurePet_Version = action.transform("JSONPATH", "$.data["+i+"].version", json);
-			var SurePet_CreatedAt = action.transform("JSONPATH", "$.data["+i+"].created_at", json);
-			var SurePet_UpdatedAt = action.transform("JSONPATH", "$.data["+i+"].updated_at", json);
+			var SurePet_Weight = action.transform("JSONPATH", "$.data["+i+"][?(@.weight)].weight", json);
+			var SurePet_Comments = action.transform("JSONPATH", "$.data["+i+"][?(@.comments)].comments", json);
+			var SurePet_HouseholdId = action.transform("JSONPATH", "$.data["+i+"][?(@.household_id)].household_id", json);
+			var SurePet_BreedId = action.transform("JSONPATH", "$.data["+i+"][?(@.breed_id)].breed_id", json);
+			var SurePet_FoodTypeId = action.transform("JSONPATH", "$.data["+i+"][?(@.food_type_id)].food_type_id", json);
+			var SurePet_PhotoId = action.transform("JSONPATH", "$.data["+i+"][?(@.photo_id)].photo_id", json);
+			var SurePet_SpeciesId = action.transform("JSONPATH", "$.data["+i+"][?(@.species_id)].species_id", json);
+			var SurePet_TagId = action.transform("JSONPATH", "$.data["+i+"][?(@.tag_id)].tag_id", json);
+			var SurePet_Version = action.transform("JSONPATH", "$.data["+i+"][?(@.version)].version", json);
+			var SurePet_CreatedAt = action.transform("JSONPATH", "$.data["+i+"][?(@.created_at)].created_at", json);
+			var SurePet_UpdatedAt = action.transform("JSONPATH", "$.data["+i+"][?(@.updated_at)].updated_at", json);
 			// ToDo Add conditions. there can be multiple ones.
 			// JSON response is either user_id (manuell setting) or device_id
-			var SurePet_User = action.transform("JSONPATH", "$.data["+i+"].position[?(@.user_id)].user_id", json);
-			var SurePet_Device = action.transform("JSONPATH", "$.data["+i+"].position[?(@.device_id)].device_id", json);
-			var SurePet_Where = action.transform("JSONPATH", "$.data["+i+"].position.where", json);
-			var SurePet_Since = action.transform("JSONPATH", "$.data["+i+"].position.since", json);
+			var SurePet_User = action.transform("JSONPATH", "$.data["+i+"].status.activity[?(@.user_id)].user_id", json);
+			var SurePet_Device = action.transform("JSONPATH", "$.data["+i+"].status.activity[?(@.device_id)].device_id", json);
+			var SurePet_Where = action.transform("JSONPATH", "$.data["+i+"].status.activity[?(@.where)].where", json);
+			var SurePet_Since = action.transform("JSONPATH", "$.data["+i+"].status.activity[?(@.since)].since", json);
 			// converted Values with MAP
 			var SurePet_WhereMap = action.transform("MAP", "surehub.map", "location_" + SurePet_Where);
 			var SurePet_BreedIdMap = action.transform("MAP", "surehub.map", "breed_" + SurePet_BreedId);
 			var SurePet_GenderMap = action.transform("MAP", "surehub.map", "gender_" + SurePet_Gender);
 			var SurePet_FoodTypeMap = action.transform("MAP", "surehub.map", "food_" + SurePet_FoodTypeId);
+
+			// Feeder Data
+			var SurePet_FeedDevice = action.transform("JSONPATH", "$.data["+i+"].status.feeding[?(@.device_id)].device_id", json);
+			var SurePet_FeedChangeLeft = action.transform("JSONPATH", "$.data["+i+"].status.feeding[?(@.change[0])].change[0]", json);
+			var SurePet_FeedChangeRight = action.transform("JSONPATH", "$.data["+i+"].status.feeding[?(@.change[1])].change[1]", json);
+			var SurePet_FeedAt = action.transform("JSONPATH", "$.data["+i+"].status.feeding[?(@.at)].at", json);
 
 			// update general information
 			var itemId = getItem("SurePet_Id_"+(i+1));
@@ -86,6 +92,11 @@ JSRule({
 			var itemBreedIdMap = getItem("SurePet_BreedIdMap_"+(i+1));
 			var itemGenderMap = getItem("SurePet_GenderMap_"+(i+1));
 			var itemFoodTypeMap = getItem("SurePet_FoodTypeMap_"+(i+1));
+			// Feeder Data
+			var itemFeedDevice = getItem("SurePet_FeedDevice_"+(i+1));
+			var itemFeedChangeLeft = getItem("SurePet_FeedChangeLeft_"+(i+1));
+			var itemFeedChangeRight = getItem("SurePet_FeedChangeRight_"+(i+1));
+			var itemFeedAt = getItem("SurePet_FeedAt_"+(i+1));
 
 			postUpdate(itemId, SurePet_Id);
 			postUpdate(itemName, SurePet_Name);
@@ -132,7 +143,12 @@ JSRule({
 			postUpdate(itemGenderMap, SurePet_GenderMap);
 			postUpdate(itemFoodTypeMap, SurePet_FoodTypeMap);
 
-			logInfo(me, "The pet " + (i + 1) + " information was updated!")
+			// Feeder Data
+			postUpdate(itemFeedDevice, SurePet_FeedDevice);
+			postUpdate(itemFeedChangeLeft, SurePet_FeedChangeLeft);
+			postUpdate(itemFeedChangeRight, SurePet_FeedChangeRight);
+			postUpdate(itemFeedAt, SurePet_FeedAt);
+			logDebug(me, "The pet " + (i + 1) + " information was updated!")
 		}
 	}
 });
