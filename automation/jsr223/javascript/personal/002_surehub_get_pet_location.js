@@ -39,13 +39,8 @@ JSRule({
 			var SurePet_Birthday = action.transform("JSONPATH", "$.data["+i+"][?(@.date_of_birth)].date_of_birth", json);
 			var SurePet_Weight = action.transform("JSONPATH", "$.data["+i+"][?(@.weight)].weight", json);
 			var SurePet_Comments = action.transform("JSONPATH", "$.data["+i+"][?(@.comments)].comments", json);
-			var SurePet_HouseholdId = action.transform("JSONPATH", "$.data["+i+"][?(@.household_id)].household_id", json);
-			var SurePet_BreedId = action.transform("JSONPATH", "$.data["+i+"][?(@.breed_id)].breed_id", json);
-			var SurePet_FoodTypeId = action.transform("JSONPATH", "$.data["+i+"][?(@.food_type_id)].food_type_id", json);
-			var SurePet_PhotoId = action.transform("JSONPATH", "$.data["+i+"][?(@.photo_id)].photo_id", json);
-			var SurePet_SpeciesId = action.transform("JSONPATH", "$.data["+i+"][?(@.species_id)].species_id", json);
-			var SurePet_TagId = action.transform("JSONPATH", "$.data["+i+"][?(@.tag_id)].tag_id", json);
-			var SurePet_Version = action.transform("JSONPATH", "$.data["+i+"][?(@.version)].version", json);
+			var SurePet_Breed = action.transform("JSONPATH", "$.data["+i+"][?(@.breed_id)].breed_id", json);
+			var SurePet_FoodType = action.transform("JSONPATH", "$.data["+i+"][?(@.food_type_id)].food_type_id", json);
 			var SurePet_CreatedAt = action.transform("JSONPATH", "$.data["+i+"][?(@.created_at)].created_at", json);
 			var SurePet_UpdatedAt = action.transform("JSONPATH", "$.data["+i+"][?(@.updated_at)].updated_at", json);
 			// ToDo Add conditions. there can be multiple ones.
@@ -54,11 +49,6 @@ JSRule({
 			var SurePet_Device = action.transform("JSONPATH", "$.data["+i+"].status.activity[?(@.device_id)].device_id", json);
 			var SurePet_Where = action.transform("JSONPATH", "$.data["+i+"].status.activity[?(@.where)].where", json);
 			var SurePet_Since = action.transform("JSONPATH", "$.data["+i+"].status.activity[?(@.since)].since", json);
-			// converted Values with MAP
-			var SurePet_WhereMap = action.transform("MAP", "surehub.map", "location_" + SurePet_Where);
-			var SurePet_BreedIdMap = action.transform("MAP", "surehub.map", "breed_" + SurePet_BreedId);
-			var SurePet_GenderMap = action.transform("MAP", "surehub.map", "gender_" + SurePet_Gender);
-			var SurePet_FoodTypeMap = action.transform("MAP", "surehub.map", "food_" + SurePet_FoodTypeId);
 
 			// Feeder Data
 			var SurePet_FeedDevice = action.transform("JSONPATH", "$.data["+i+"].status.feeding[?(@.device_id)].device_id", json);
@@ -73,13 +63,8 @@ JSRule({
 			var itemBirthday = getItem("SurePet_Birthday_"+(i+1));
 			var itemWeight = getItem("SurePet_Weight_"+(i+1));
 			var itemComments = getItem("SurePet_Comments_"+(i+1));
-			var itemHouseholdId = getItem("SurePet_HouseholdId_"+(i+1));
-			var itemBreedId = getItem("SurePet_BreedId_"+(i+1));
-			var itemFoodTypeId = getItem("SurePet_FoodTypeId_"+(i+1));
-			var itemPhotoId = getItem("SurePet_PhotoId_"+(i+1));
-			var itemSpeciesId = getItem("SurePet_SpeciesId_"+(i+1));
-			var itemTagId = getItem("SurePet_TagId_"+(i+1));
-			var itemVersionId = getItem("SurePet_Version_"+(i+1));
+			var itemBreed = getItem("SurePet_Breed_"+(i+1));
+			var itemFoodType = getItem("SurePet_FoodType_"+(i+1));
 			var itemCreatedAt = getItem("SurePet_CreatedAt_"+(i+1));
 			var itemUpdatedAt = getItem("SurePet_UpdatedAt_"+(i+1));
 			var itemUserId = getItem("SurePet_User_"+(i+1));
@@ -87,11 +72,6 @@ JSRule({
 			var itemEnteredThrough = getItem("SurePet_EnteredThrough_"+(i+1));
 			var itemWhere = getItem("SurePet_Where_"+(i+1));
 			var itemSince = getItem("SurePet_Since_"+(i+1));
-			//
-			var itemWhereMap = getItem("SurePet_WhereMap_"+(i+1));
-			var itemBreedIdMap = getItem("SurePet_BreedIdMap_"+(i+1));
-			var itemGenderMap = getItem("SurePet_GenderMap_"+(i+1));
-			var itemFoodTypeMap = getItem("SurePet_FoodTypeMap_"+(i+1));
 			// Feeder Data
 			var itemFeedDevice = getItem("SurePet_FeedDevice_"+(i+1));
 			var itemFeedChangeLeft = getItem("SurePet_FeedChangeLeft_"+(i+1));
@@ -104,13 +84,8 @@ JSRule({
 			postUpdate(itemBirthday, SurePet_Birthday);
 			postUpdate(itemWeight, SurePet_Weight);
 			postUpdate(itemComments, SurePet_Comments);
-			postUpdate(itemHouseholdId, SurePet_HouseholdId);
-			postUpdate(itemBreedId, SurePet_BreedId);
-			postUpdate(itemFoodTypeId, SurePet_FoodTypeId);
-			postUpdate(itemPhotoId, SurePet_PhotoId);
-			postUpdate(itemSpeciesId, SurePet_SpeciesId);
-			postUpdate(itemTagId, SurePet_TagId);
-			postUpdate(itemVersionId, SurePet_Version);
+			postUpdate(itemBreed, SurePet_Breed);
+			postUpdate(itemFoodType, SurePet_FoodType);
 			postUpdate(itemCreatedAt, SurePet_CreatedAt);
 			postUpdate(itemUpdatedAt, SurePet_UpdatedAt);
 			postUpdate(itemUserId, SurePet_User);
@@ -137,11 +112,6 @@ JSRule({
 					postUpdate(itemEnteredThrough, DDeviceName);
 				}
 			}
-			//
-			postUpdate(itemWhereMap, SurePet_WhereMap);
-			postUpdate(itemBreedIdMap, SurePet_BreedIdMap);
-			postUpdate(itemGenderMap, SurePet_GenderMap);
-			postUpdate(itemFoodTypeMap, SurePet_FoodTypeMap);
 
 			// Feeder Data
 			postUpdate(itemFeedDevice, SurePet_FeedDevice);

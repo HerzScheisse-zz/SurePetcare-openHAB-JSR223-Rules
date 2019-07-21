@@ -2,6 +2,7 @@ gender_0=undefined
 gender_1=Male
 gender_2=Female
 
+location_0=UNDEF
 location_1=Inside
 location_2=Outside
 
@@ -63,4 +64,6 @@ food_1=wet food
 food_2=dry food
 food_3=wet & dry food
 food_NULL=UNDEF
+
 NULL=undefined
+
