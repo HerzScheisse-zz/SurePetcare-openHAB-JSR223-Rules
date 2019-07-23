@@ -65,4 +65,8 @@ food_2=Trockenfutter
 food_3=Nass- u. Trockenfutter
 food_NULL=UNDEF
 
+bowls_0=UNDEF
+bowls_1=Große Schale
+bowls_4=Halbe Schalen
+
 NULL=undefiniert

@@ -65,5 +65,8 @@ food_2=dry food
 food_3=wet & dry food
 food_NULL=UNDEF
 
-NULL=undefined
+bowls_0=UNDEF
+bowls_1=Big bowl
+bowls_4=Half bowls
 
+NULL=undefined

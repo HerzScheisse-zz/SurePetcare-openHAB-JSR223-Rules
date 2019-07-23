@@ -88,9 +88,7 @@ JSRule({
 				count_flap++;
 				logDebug(me, "TEST - " + flapData + " --- " + flapDataTf + " --- " + count_flap);
 				var SurePet_FlapId = action.transform("JSONPATH", flapData + ".id", json);
-				var SurePet_FlapParentDeviceId = action.transform("JSONPATH", flapData + ".parent_device_id", json);
 				var SurePet_FlapProductId = action.transform("JSONPATH", flapData + ".product_id", json);
-				var SurePet_FlapHouseholdId = action.transform("JSONPATH", flapData + ".household_id", json);
 				var SurePet_FlapName = action.transform("JSONPATH", flapData + ".name", json);
 				var SurePet_FlapSerial = action.transform("JSONPATH", flapData + ".serial_number", json);
 				var SurePet_FlapMac = action.transform("JSONPATH", flapData + ".mac_address", json);
@@ -109,9 +107,7 @@ JSRule({
 				var SurePet_FlapBattery = action.transform("JSONPATH", flapData + ".status.battery", json);
 
 				var itemFlapId = getItem("SurePet_FlapId_"+count_flap);
-				var itemFlapParentDeviceId = getItem("SurePet_FlapParentDeviceId_"+count_flap);
 				var itemFlapProductId = getItem("SurePet_FlapProductId_"+count_flap);
-				var itemFlapHouseholdId = getItem("SurePet_FlapHouseholdId_"+count_flap);
 				var itemFlapName = getItem("SurePet_FlapName_"+count_flap);
 				var itemFlapSerial = getItem("SurePet_FlapSerial_"+count_flap);
 				var itemFlapMac = getItem("SurePet_FlapMac_"+count_flap);
@@ -129,9 +125,7 @@ JSRule({
 				var itemFlapBattery = getItem("SurePet_FlapBattery_"+count_flap);
 
 				postUpdate(itemFlapId, SurePet_FlapId);
-				postUpdate(itemFlapParentDeviceId, SurePet_FlapParentDeviceId);
 				postUpdate(itemFlapProductId, SurePet_FlapProductId);
-				postUpdate(itemFlapHouseholdId, SurePet_FlapHouseholdId);
 				postUpdate(itemFlapName, SurePet_FlapName);
 				postUpdate(itemFlapSerial, SurePet_FlapSerial);
 				postUpdate(itemFlapMac, SurePet_FlapMac);
@@ -156,9 +150,7 @@ JSRule({
 				count_feeder++;
 				logDebug(me, "TEST - " + feederData + " --- " + feederDataTf + " --- " + count_feeder);
 				var SurePet_FeederId = action.transform("JSONPATH", feederData + ".id", json);
-				var SurePet_FeederParentDeviceId = action.transform("JSONPATH", feederData + ".parent_device_id", json);
 				var SurePet_FeederProductId = action.transform("JSONPATH", feederData + ".product_id", json);
-				var SurePet_FeederHouseholdId = action.transform("JSONPATH", feederData + ".household_id", json);
 				var SurePet_FeederName = action.transform("JSONPATH", feederData + ".name", json);
 				var SurePet_FeederSerial = action.transform("JSONPATH", feederData + ".serial_number", json);
 				var SurePet_FeederMac = action.transform("JSONPATH", feederData + ".mac_address", json);
@@ -167,25 +159,19 @@ JSRule({
 				var SurePet_FeederPairingAt = action.transform("JSONPATH", feederData + ".pairing_at", json);
 				var SurePet_FeederBowlsType = action.transform("JSONPATH", feederData + ".control.bowls[?(@.type)].type", json);
 				var SurePet_FeederBowlsBigFoodtype = NULL;
-				var SurePet_FeederBowlsBigFoodtypeMap = NULL;
 				var SurePet_FeederBowlsBigTarget = NULL;
 				var SurePet_FeederBowlsSmallLeftFoodtype = NULL;
-				var SurePet_FeederBowlsSmallLeftFoodtypeMap = NULL;
 				var SurePet_FeederBowlsSmallLeftTarget = NULL;
 				var SurePet_FeederBowlsSmallRightFoodtype = NULL;
-				var SurePet_FeederBowlsSmallRightFoodtypeMap = NULL;
 				var SurePet_FeederBowlsSmallRightTarget = NULL;
 				if (SurePet_FeederBowlsType == 1) {
 					SurePet_FeederBowlsBigFoodtype = action.transform("JSONPATH", feederData + ".control.bowls.settings[0][?(@.food_type)].food_type", json);
-					SurePet_FeederBowlsBigFoodtypeMap = action.transform("MAP", "surehub.map", "food_" + SurePet_FeederBowlsBigFoodtype);
 					SurePet_FeederBowlsBigTarget = action.transform("JSONPATH", feederData + ".control.bowls.settings[0][?(@.target)].target", json);
 				}
 				else if (SurePet_FeederBowlsType == 4) {
 					SurePet_FeederBowlsSmallLeftFoodtype = action.transform("JSONPATH", feederData + ".control.bowls.settings[0][?(@.food_type)].food_type", json);
-					SurePet_FeederBowlsSmallLeftFoodtypeMap = action.transform("MAP", "surehub.map", "food_" + SurePet_FeederBowlsSmallLeftFoodtype);
 					SurePet_FeederBowlsSmallLeftTarget = action.transform("JSONPATH", feederData + ".control.bowls.settings[0][?(@.target)].target", json);
 					SurePet_FeederBowlsSmallRightFoodtype = action.transform("JSONPATH", feederData + ".control.bowls.settings[1][?(@.food_type)].food_type", json);
-					SurePet_FeederBowlsSmallRightFoodtypeMap = action.transform("MAP", "surehub.map", "food_" + SurePet_FeederBowlsSmallRightFoodtype);
 					SurePet_FeederBowlsSmallRightTarget = action.transform("JSONPATH", feederData + ".control.bowls.settings[1][?(@.target)].target", json);
 				}
 				var SurePet_FeederBowlsLidCloseDelay = action.transform("JSONPATH", feederData + ".control.lid[?(@.close_delay)].close_delay", json);
@@ -198,9 +184,7 @@ JSRule({
 				var SurePet_FeederBattery = action.transform("JSONPATH", feederData + ".status.battery", json);
 
 				var itemFeederId = getItem("SurePet_FeederId_"+count_feeder);
-				var itemFeederParentDeviceId = getItem("SurePet_FeederParentDeviceId_"+count_feeder);
 				var itemFeederProductId = getItem("SurePet_FeederProductId_"+count_feeder);
-				var itemFeederHouseholdId = getItem("SurePet_FeederHouseholdId_"+count_feeder);
 				var itemFeederName = getItem("SurePet_FeederName_"+count_feeder);
 				var itemFeederSerial = getItem("SurePet_FeederSerial_"+count_feeder);
 				var itemFeederMac = getItem("SurePet_FeederMac_"+count_feeder);
@@ -209,13 +193,10 @@ JSRule({
 				var itemFeederPairingAt = getItem("SurePet_FeederPairingAt_"+count_feeder);
 				var itemFeederBowlsType = getItem("SurePet_FeederBowlsType_"+count_feeder);
 				var itemFeederBowlsBigFoodtype = getItem("SurePet_FeederBowlsBigFoodtype_"+count_feeder);
-				var itemFeederBowlsBigFoodtypeMap = getItem("SurePet_FeederBowlsBigFoodtypeMap_"+count_feeder);
 				var itemFeederBowlsBigTarget = getItem("SurePet_FeederBowlsBigTarget_"+count_feeder);
 				var itemFeederBowlsSmallLeftFoodtype = getItem("SurePet_FeederBowlsSmallLeftFoodtype_"+count_feeder);
-				var itemFeederBowlsSmallLeftFoodtypeMap = getItem("SurePet_FeederBowlsSmallLeftFoodtypeMap_"+count_feeder);
 				var itemFeederBowlsSmallLeftTarget = getItem("SurePet_FeederBowlsSmallLeftTarget_"+count_feeder);
 				var itemFeederBowlsSmallRightFoodtype = getItem("SurePet_FeederBowlsSmallRightFoodtype_"+count_feeder);
-				var itemFeederBowlsSmallRightFoodtypeMap = getItem("SurePet_FeederBowlsSmallRightFoodtypeMap_"+count_feeder);
 				var itemFeederBowlsSmallRightTarget = getItem("SurePet_FeederBowlsSmallRightTarget_"+count_feeder);
 				var itemFeederBowlsLidCloseDelay = getItem("SurePet_FeederBowlsLidCloseDelay_"+count_feeder);
 				var itemFeederBowlsTrainingMode = getItem("SurePet_FeederBowlsTrainingMode_"+count_feeder);
@@ -227,9 +208,7 @@ JSRule({
 				var itemFeederBattery = getItem("SurePet_FeederBattery_"+count_feeder);
 
 				postUpdate(itemFeederId, SurePet_FeederId);
-				postUpdate(itemFeederParentDeviceId, SurePet_FeederParentDeviceId);
 				postUpdate(itemFeederProductId, SurePet_FeederProductId);
-				postUpdate(itemFeederHouseholdId, SurePet_FeederHouseholdId);
 				postUpdate(itemFeederName, SurePet_FeederName);
 				postUpdate(itemFeederSerial, SurePet_FeederSerial);
 				postUpdate(itemFeederMac, SurePet_FeederMac);
@@ -238,13 +217,10 @@ JSRule({
 				postUpdate(itemFeederPairingAt, SurePet_FeederPairingAt);
 				postUpdate(itemFeederBowlsType, SurePet_FeederBowlsType);
 				postUpdate(itemFeederBowlsBigFoodtype, SurePet_FeederBowlsBigFoodtype);
-				postUpdate(itemFeederBowlsBigFoodtypeMap, SurePet_FeederBowlsBigFoodtypeMap);
 				postUpdate(itemFeederBowlsBigTarget, SurePet_FeederBowlsBigTarget);
 				postUpdate(itemFeederBowlsSmallLeftFoodtype, SurePet_FeederBowlsSmallLeftFoodtype);
-				postUpdate(itemFeederBowlsSmallLeftFoodtypeMap, SurePet_FeederBowlsSmallLeftFoodtypeMap);
 				postUpdate(itemFeederBowlsSmallLeftTarget, SurePet_FeederBowlsSmallLeftTarget);
 				postUpdate(itemFeederBowlsSmallRightFoodtype, SurePet_FeederBowlsSmallRightFoodtype);
-				postUpdate(itemFeederBowlsSmallRightFoodtypeMap, SurePet_FeederBowlsSmallRightFoodtypeMap);
 				postUpdate(itemFeederBowlsSmallRightTarget, SurePet_FeederBowlsSmallRightTarget);
 				postUpdate(itemFeederBowlsLidCloseDelay, SurePet_FeederBowlsLidCloseDelay);
 				postUpdate(itemFeederBowlsTrainingMode, SurePet_FeederBowlsTrainingMode);
